@@ -1,0 +1,27 @@
+<div class="actions">
+  <h1>Product List</h1>
+  <%- include('../partials/errorMessage.ejs') %>
+  <div class="buttons">
+    <a href="/products/add-product" title="Create new product">Add</a>
+  </div>
+</div>
+<div class="product-grid">
+  <% products.forEach(product => { %>
+  <div class="product" style="background-color: <%=product.color%>" title="<%= product.name %> ">
+    <input title="Click to select" class="delete-checkbox" type="checkbox" name="delete-checkbox" />
+    <div class="details">
+      <p><strong>SKU:</strong> <%= product.sku %></p>
+      <p><strong>Product:</strong> <%= product.name %></p>
+      <p><strong>Price:</strong> $<%= product.price %></p>
+      <p><strong>Category:</strong> <%= product.category %></p>
+    </div>
+    <form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+      <div class="buttons">
+        <button class="del-icon" type="submit" id="delete-product-btn" title="Delete this item">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <% }) %>
+</div>

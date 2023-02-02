@@ -1,0 +1,142 @@
+<div class="actions">
+  <h1>New Product</h1>
+  <%- include('../partials/errorMessage.ejs') %>
+  <div class="buttons">
+    <a href="/" class="danger" title="Cancel the form">Cancel</a>
+  </div>
+</div>
+<div class="form-grid">
+  <h3>Fields marked with a <span class="must"></span> are mandatory</h3>
+  <form
+    action="/products"
+    method="POST"
+    class="product-form"
+    id="product-form"
+    name="product-form"
+  >
+    <div class="new-product">
+      <label for="sku" class="must">SKU</label>
+      <input
+        type="text"
+        name="sku"
+        id="sku"
+        required
+        value="<%= product.sku %>"
+        placeholder="Unique SKU code"
+        maxlength="10"
+      />
+    </div>
+    <div class="new-product">
+      <label for="name" class="must">Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        required
+        value="<%= product.name %>"
+        placeholder="Name of the product"
+      />
+    </div>
+    <div class="new-product">
+      <label for="price" class="must">Price ($)</label>
+      <input
+        type="number"
+        name="price"
+        id="price"
+        required
+        value="<%= product.price %> "
+        placeholder="Enter a number"
+      />
+    </div>
+    <div class="new-product">
+      <label for="color">Color</label>
+      <select name="color" id="color" title="Choose a color" value="<%= product.color %>">
+        <option label="White">White</option>
+        <option label="Red">Red</option>
+        <option label="Blue">Blue</option>
+        <option label="Green">Green</option>
+        <option label="Orange">Orange</option>
+        <option label="Yellow">Yellow</option>
+        <option label="Gray">Gray</option>
+        <option label="Pink">Pink</option>
+        <option label="Brown">Brown</option>
+        <option label="Burlywood">Burlywood</option>
+        <option label="Purple">Purple</option>
+      </select>
+    </div>
+    <div class="new-product">
+      <label for="productType" class="must">Category</label>
+      <select
+        name="category"
+        id="productType"
+        required
+        title="Select to type switch"
+      >
+        <% categories.forEach(category => { %> 
+          <% if (category.id === product.category) { %>
+            <option
+            selected
+            label="<%= category.category %>"
+            value="<%= category.category %>"
+            >
+            <% } else {%>
+              <option
+              label="<%= category.category %>"
+              value="<%= category.category %> "
+              >
+              <% } %> 
+          <% }) %>
+      </select>
+    </div>
+    <div class="new-product hide optional-form" id="dvdForm">
+      <div class="furniture-items">
+        <label for="size">Size (MB)</label>
+        <input type="number" name="size" id="size" />
+      </div>
+      <p>Please provide the size of the dvd in Megabytes</p>
+    </div>
+    <div
+      class="new-product hide optional-form"
+      id="furnitureForm"
+    >
+      <div class="furniture-items">
+        <label for="height">Height (CM)</label>
+        <input type="number" name="height" id="height" />
+      </div>
+      <div class="furniture-items">
+        <label for="width">Width (CM)</label>
+        <input type="number" name="width" id="width" />
+      </div>
+      <div class="furniture-items">
+        <label for="length">Length (CM)</label>
+        <input type="number" name="length" id="length" />
+      </div>
+      <p>Please provide dimensions in H x W x L format</p>
+    </div>
+    <div class="new-product hide optional-form" id="bookForm">
+      <div class="furniture-items">
+        <label for="book-author">Author</label>
+        <input type="text" name="book-author" id="book-author" />
+      </div>
+      <div class="furniture-items">
+        <label for="weight">Weight (KG)</label>
+        <input type="number" name="weight" id="weight" />
+      </div>
+      <p>Please provide the author and number of pages</p>
+    </div>
+    <div class="buttons">
+      <button
+        class="success"
+        type="submit"
+        title="Save new product"
+        value="Add"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+
+<script src="/javascript/script.js"></script>
+
+ 

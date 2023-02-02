@@ -1,0 +1,464 @@
+/* * { */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 100px 0px 100px;
+  position: relative;
+}
+
+.navbar img {
+  width: 6.25rem;
+  border: 1px solid crimson;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.navbar img:hover {
+  cursor: pointer;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  font-size: 1.2rem;
+}
+
+.links li {
+  padding: 10px 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: black;
+  padding: 10px 20px;
+  transition: ease-in-out 0.2s;
+}
+
+.links a:hover {
+  color: white;
+  background-color: tomato;
+  border-radius: 10px;
+  transform: translateX(2.1);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background: crimson;
+  transition: all 0.5s ease;
+  z-index: 1110;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.sidebar ul li {
+  list-style: none;
+}
+
+.sidebar ul {
+  margin-top: 100px;
+}
+
+.sidebar ul a {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.2s;
+}
+
+.sidebar ul li:hover a {
+  padding-left: 50px;
+}
+
+#check {
+  display: none;
+}
+
+label #btn,
+label #cancel {
+  display: none;
+  position: fixed;
+  background: crimson;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.active {
+  background: gray;
+}
+
+label #btn {
+  z-index: 1111;
+  right: 100px;
+  top: 25px;
+  font-size: 35px;
+  color: white;
+  padding: 6px 12px;
+  transition: all 0.5s;
+}
+
+label #cancel {
+  z-index: 1111;
+  right: -195px;
+  top: 25px;
+  font-size: 35px;
+  color: white;
+  padding: 6px 12px;
+  transition: all 0.5s ease;
+}
+
+#check:checked ~ .sidebar {
+  right: 0;
+}
+
+#check:checked ~ label #btn {
+  right: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#check:checked ~ label #cancel {
+  right: 195px;
+}
+
+#check:checked ~ section {
+  margin-left: 250px;
+}
+
+.container {
+  margin: 6.25rem;
+}
+
+/* Product List */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid crimson;
+  padding-bottom: 1.25rem;
+}
+
+.error-message {
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.buttons .success {
+  width: 100%;
+}
+
+.buttons button {
+  padding: 3px;
+  background-color: white;
+  border-radius: 10px;
+  width: 2.1rem;
+  font-size: 1.1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: ease-in-out 0.2s;
+}
+
+.buttons a {
+  margin-right: 20px;
+  padding: 3px 30px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: black;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: ease-in-out 0.2s;
+}
+
+.buttons button:hover, .buttons .danger:hover {
+  background-color: tomato;
+  cursor: pointer;
+  color: white;
+  border: 2px solid tomato;
+  transform: scale(1.2);
+}
+
+.del-icon:hover{
+  transform: scale(1.2);
+}
+
+.buttons .success:hover {
+  background-color: springgreen;
+  border-color: springgreen;
+  transform: scale(1.2);
+}
+
+.buttons a:hover {
+  background-color: springgreen;
+  color: white;
+  border: 2px solid springgreen;
+  transform: scale(1.2);
+}
+
+.product-grid {
+  padding: 50px;
+  display: grid;
+  justify-content: center;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, 15.62rem);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.product-grid .product {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 25px auto;
+  width: 250px;
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  transition: ease-in-out 0.2s;
+}
+
+.product-grid .product:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  border-color: tomato;
+}
+
+.delete-checkbox {
+ left: 5px;
+ top: 5px;
+ position: absolute;
+ cursor: pointer;
+ padding: 3px;
+ width: 10%;
+}
+
+.delete-checkbox:hover{
+  outline: 5px solid tomato;
+  accent-color: tomato;
+}
+
+.delete-checkbox:checked{
+  border: none;
+  accent-color: tomato;
+}
+
+.product .details{ 
+  margin-bottom: 20px;
+}
+
+.product-grid .product p {
+  margin-bottom: 5px;
+}
+
+.product button{
+  bottom: 0;
+  position: absolute;
+  left: 0;
+}
+
+/* New Product */
+.hide {
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+.form-grid {
+  padding: 50px;
+  display: grid;
+  justify-content: center;
+  gap: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-grid h3{
+  text-align: center;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.product-form label {
+  font-size: 1.2rem;
+}
+
+.new-product {
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.furniture-items {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.new-product input,
+select {
+  float: right;
+  border-radius: 8px;
+  height: 30px;
+  width: 18.75rem;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 5px;
+  display: inline-block;
+}
+
+.new-product input:focus,
+.new-product select:focus {
+  transform: scale(1.1);
+}
+
+.new-product input,
+select {
+  cursor: pointer;
+}
+
+.new-product p {
+  text-align: center;
+  font-style: italic;
+  font-weight: 600;
+  color: red;
+}
+
+.new-product label {
+  padding-right: 20px;
+}
+
+.must::after {
+  content: '*';
+  font-size: 1.8rem;
+  color: red;
+}
+
+.optional-form {
+  box-shadow: 1px 1px 1px 1px;
+  border-radius: 10px;
+  border: 1px solid black;
+  transition: ease-in-out 0.2s;
+  padding: 5px;
+}
+
+/* About */
+.about-grid {
+  padding-bottom: 6.25rem;
+  margin: 50px auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  max-width: 800px;
+}
+
+.about-grid a {
+  color: crimson;
+}
+
+.about-grid a:hover {
+  color: tomato;
+}
+
+.about-grid p {
+  margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: auto;
+}
+
+.footer-content {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  background-color: crimson;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px 0;
+  letter-spacing: 3px;
+}
+
+.footer-content p {
+  line-height: 30px;
+}
+
+.footer-content a {
+  color: black;
+  font-weight: 600;
+}
+
+.footer-content a:hover {
+  color: springgreen;
+}
+
+/* Media Queries */
+@media screen and (max-width: 800px) {
+  label #btn,
+  label #cancel {
+    display: block;
+  }
+  
+  .links {
+    display: none;
+  }
+  
+  .new-product label {
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .actions{
+    flex-direction: column;
+  }
+
+  .buttons{
+    padding: 20px 0px 20px 0px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .buttons a {
+    display: inline-block;
+    z-index: 1100;
+    right: 300px;
+    top: 25px;
+    padding: 6px 12px;
+    text-align: center;
+    width: 6.25rem;
+    max-width: 200px;
+  }
+}
